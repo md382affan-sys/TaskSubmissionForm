@@ -1,2 +1,8 @@
 .venv/
 venv/
+
+
+# Flask specific
+
+# SQLite database
+*.sqlite3
