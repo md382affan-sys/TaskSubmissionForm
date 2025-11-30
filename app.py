@@ -5,24 +5,24 @@ import os
 app = Flask(__name__)
 app.secret_key = "my_secret_key"
 
-# -------------------------
-# Database Configuration
-# -------------------------
+
+# Database Configuration----------------
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-# -------------------------
-# File Upload Folder
-# -------------------------
+
+# File Upload Folder---------------
+
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
-# -------------------------
-# Database Model (Table)
-# -------------------------
+
+# Database Model (Table)----------------
+
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     assignee_name = db.Column(db.String(200))
@@ -36,9 +36,9 @@ with app.app_context():
     db.create_all()
 
 
-# -------------------------
-# Home Page
-# -------------------------
+
+# Home Page---------------
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -83,17 +83,16 @@ def index():
     return render_template("index.html")
 
 
-# -------------------------
-# Success Page
-# -------------------------
+# Success Page---------------
+
 @app.route("/success")
 def success():
     return "Task saved successfully in SQLite + Session!"
 
 
-# -------------------------
-# API To See All Tasks
-# -------------------------
+
+# API To See All Tasks---------------
+
 @app.route("/all")
 def all_tasks():
     tasks = Task.query.all()
