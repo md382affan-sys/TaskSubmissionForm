@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Submission Form</title>
+
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #c7e3ff, #e9f4ff);
+      font-family: 'Poppins', sans-serif;
+      padding: 40px 0;
+    }
+
+    .form-wrapper {
+      max-width: 550px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+      border-left: 8px solid #4a90e2;
+    }
+
+    .form-title {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #2a4a7b;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #2a2a2a;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="file"] {
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: #4a90e2;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #3576c5;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-wrapper">
+
+    <div class="form-title">Task Submission Form</div>
+
+    <!-- IMPORTANT: Added method and enctype for Flask -->
+    <form method="POST" enctype="multipart/form-data">
+
+      <!-- Assignee -->
+      <div class="mb-3">
+        <label>Assignee Name</label>
+        <input type="text" name="assignee_name" class="form-control" placeholder="John Doe or john@example.com"
+          required>
+      </div>
+
+      <!-- Assigned By -->
+      <div class="mb-3">
+        <label>Task Assigned By</label>
+        <input type="text" name="assigned_by" class="form-control" placeholder="Manager or manager@example.com"
+          required>
+      </div>
+
+      <!-- Due Date -->
+      <div class="mb-3">
+        <label>Task Due Date</label>
+        <input type="date" name="due_date" class="form-control" required>
+      </div>
+
+
+      <!-- Upload -->
+      <div class="mb-3">
+        <label>Upload Task Details (PDF)</label>
+        <input type="file" name="task_pdf" class="form-control" accept="application/pdf" required>
+
+        <!-- File rule text -->
+        <small class="text-muted d-block mt-1">
+          Allowed: <strong>PDF only</strong> • Size: <strong>5 MB – 10 MB</strong>
+        </small>
+      </div>
+
+
+      <!-- Submit -->
+      <button type="submit" class="btn-submit">Submit</button>
+
+    </form>
+
+  </div>
+
+</body>
+
+</html>
